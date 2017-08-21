@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='主页'"></head>
+<body>
+
+<table id="tt" class="easyui-datagrid"></table>
+<div id="tb" style="padding:2px 5px">
+    <a class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+    <a class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+    <a class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+    <a class="easyui-linkbutton" iconCls="icon-tip" plain="true">导出</a>
+
+    姓名: <input id="name_Search" class="easyui-textbox" th:value="${name}" />
+    日期起: <input id="dateq_Search" class="easyui-datebox" th:value="${dateq}" />
+    日期止: <input id="datez_Search" class="easyui-datebox" th:value="${datez}" />
+    <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-search" style="width:63px">查询</a>
+</div>
+<div id="dd">
+    <form id="ff" action="" class="easyui-form" method="post" data-options="novalidate:true">
+        <input type="hidden" name="id" />
+        <table style="margin:10px auto" cellpadding="5">
+            <tr>
+                <td>模块:</td>
+                <td colspan="3">
+                    <input class="easyui-textbox" data-options="required:true,prompt:'举例：学生端、运维中心、JIRA、信息发布等'" name="module" id="module" style="width:377px" />
+                </td>
+            </tr>
+            <tr>
+                <td>描述:</td>
+                <td colspan="3">
+                    <input class="easyui-textbox" data-options="required:true,prompt:'一句话描述你做的功能内容，补充放在备注'" name="description" id="description" style="width:377px" />
+                </td>
+            </tr>
+            <tr>
+                <td>姓名:</td>
+                <td colspan="3">
+                    <input class="easyui-textbox" data-options="required:true,prompt:'负责人'" name="name" id="name" style="width:377px" />
+                </td>
+            </tr>
+            <tr>
+                <td>计划（0-100）:</td>
+                <td colspan="3">
+                    <input class="easyui-numberbox" name="plan" id="plan" data-options="required:true,min:0,max:100,prompt:'计划完成比例'" style="width:377px" />
+                </td>
+            </tr>
+            <tr>
+                <td>实际:</td>
+                <td colspan="3">
+                    <input class="easyui-numberbox" name="practical" id="practical" data-options="min:0,max:100,prompt:'实际完成比例'" style="width:377px" />
+                </td>
+            </tr>
+            <tr>
+                <td>日期:</td>
+                <td colspan="3">
+                    <input class="easyui-datebox" name="date" id="date" data-options="required:true" style="width:377px" />
+                </td>
+            </tr>
+            <tr>
+                <td>备注:</td>
+                <td colspan="3">
+                    <input class="easyui-textbox" name="note" id="note" data-options="multiline:true,prompt:'举例：\n1、JIRA:566,387,210\n2、设备中间状态同步时间速度提高，原400教室7秒左右，现100毫秒左右'" style="width:377px;height:280px" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+    <div th:include="layout :: htmlfooter">(footer)</div>
+    <script th:src="@{/js/ribao.js}"></script>
+</body>
+</html>

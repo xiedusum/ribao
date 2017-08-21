@@ -1,0 +1,15 @@
+package com.whz.ribao;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@SpringBootApplication
+@EnableScheduling
+public class RibaoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(RibaoApplication.class, args);
+	}
+}

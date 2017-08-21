@@ -1,0 +1,56 @@
+spring:
+    datasource:
+      url: jdbc:mysql://localhost:3306/ribao?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: root
+      #schema: database/import.sql
+      #sql-script-encoding: utf-8
+      driver-class-name: com.mysql.jdbc.Driver
+
+    jpa:
+      database: mysql
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+        naming:
+          strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+      properties:
+         hibernate:
+            dialect: org.hibernate.dialect.MySQL5Dialect
+
+    thymeleaf:
+       cache: false
+       mode: LEGACYHTML5
+
+    jackson:
+      date-format: yyyy-MM-dd HH:mm:ss
+    mail:
+      host: smtp.exmail.qq.com
+      username: zhks@sunmnet.com
+      password: 1qaz!QAZ
+      port: 465
+      default-encoding: UTF-8
+      protocol: smtp
+      properties:
+        mail:
+          smtp:
+            socketFactory:
+              class: javax.net.ssl.SSLSocketFactory
+            auth: true
+
+mail.fromMail.addr: zhks@sunmnet.com
+
+logging:
+    path: /usr/common/ribao/logs/
+    level:
+          com:
+            whz: INFO
+          org:
+            springframework:
+              web: INFO
+            hibernate: ERROR
+
+server:
+  context-path: /ribao
+  port: 80
+

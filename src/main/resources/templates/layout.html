@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="htmlhead">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">(title)</title>
+    <link th:href="@{/plugins/easyui/themes/default/easyui.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/easyui/themes/icon.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div th:fragment="htmlfooter">
+    <script th:src="@{/plugins/easyui/jquery.min.js}"></script>
+    <script th:src="@{/plugins/easyui/jquery.easyui.min.js}"></script>
+    <script th:src="@{/plugins/easyui/locale/easyui-lang-zh_CN.js}"></script>
+    <script th:inline="javascript">
+        var path = /*[[@{/}]]*/'';
+    </script>
+    <script th:src="@{/js/common/common.js}"></script>
+    <script th:src="@{/js/common/sUtils.js}"></script>
+</div>
+
+</body>
+</html>
