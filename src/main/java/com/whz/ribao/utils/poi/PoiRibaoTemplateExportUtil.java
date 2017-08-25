@@ -4,6 +4,7 @@ import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.entity.TemplateExportParams;
 import com.whz.ribao.entity.BaseBao;
 import com.whz.ribao.utils.DateUtil;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
@@ -44,6 +45,9 @@ public class PoiRibaoTemplateExportUtil {
      * @return
      */
     public static Workbook exportExcel(Map<String, List<BaseBao>> baseBaos) throws IOException {
+        if (baseBaos == null || baseBaos.isEmpty())
+            return null;
+
         //代表一行
         Map<String, Object> map;
         //代表所有列
@@ -89,8 +93,7 @@ public class PoiRibaoTemplateExportUtil {
         value.put("date", "时间："+DateUtil.getNowDate());
 
         TemplateExportParams params = new TemplateExportParams(
-                "d:\\ribao.xlsx", true);
-//                "/usr/common/baseBao/doc/excel/template/ribao.xlsx", true);
+                "/usr/common/ribao/doc/excel/template/ribao.xlsx", true);
         params.setColForEach(true);
         Workbook book = ExcelExportUtil.exportExcel(params, value);
 

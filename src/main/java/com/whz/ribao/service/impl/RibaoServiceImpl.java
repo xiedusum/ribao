@@ -10,6 +10,7 @@ import com.whz.ribao.entity.result.PageResult;
 import com.whz.ribao.service.RibaoService;
 import com.whz.ribao.utils.DateUtil;
 import com.whz.ribao.utils.poi.PoiRibaoTemplateExportUtil;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.data.domain.Page;
@@ -75,12 +76,14 @@ public class RibaoServiceImpl implements RibaoService {
         Date mon = DateUtil.firstDayOfWeek(DateUtil.stringToDate(DateUtil.getNowDate()));
         Date sun = DateUtils.addDays(mon,6);
         List<Ribao> ribaos = dao.findByDateBetween(mon, sun);
-        try {
-            Workbook book = PoiRibaoTemplateExportUtil
-                    .exportExcel(ribaos.stream().collect(Collectors.groupingBy(BaseBao::getGroupBy)));
-            book.write(response.getOutputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (CollectionUtils.isNotEmpty(ribaos)){
+            try {
+                Workbook book = PoiRibaoTemplateExportUtil
+                        .exportExcel(ribaos.stream().collect(Collectors.groupingBy(BaseBao::getGroupBy)));
+                book.write(response.getOutputStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

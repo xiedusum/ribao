@@ -10,6 +10,7 @@ import com.whz.ribao.entity.result.PageResult;
 import com.whz.ribao.service.ZhoubaoService;
 import com.whz.ribao.utils.DateUtil;
 import com.whz.ribao.utils.poi.PoiRibaoTemplateExportUtil;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -76,13 +77,15 @@ public class ZhoubaoServiceImpl implements ZhoubaoService {
         String weekq = Year.now() + "" + week;
         String weekz = DateUtil.getNextWeek(weekq);
         List<Zhoubao> zhoubaos = dao.findByWeekBetween(weekq, weekz);
-        try {
-            Workbook book = PoiRibaoTemplateExportUtil
-                    .exportExcel(zhoubaos.stream()
-                            .collect(Collectors.groupingBy(BaseBao::getGroupBy)));
-            book.write(response.getOutputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (CollectionUtils.isNotEmpty(zhoubaos)){
+            try {
+                Workbook book = PoiRibaoTemplateExportUtil
+                        .exportExcel(zhoubaos.stream()
+                                .collect(Collectors.groupingBy(BaseBao::getGroupBy)));
+                book.write(response.getOutputStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -34,7 +34,7 @@ public class CheckRibaoSchedulerTask {
     private MailService mailService;
 
 
-    @Scheduled(cron="0 30 17 ? * 2,3,4,5,6")
+    @Scheduled(cron="0 30 17 ? * MON-FRI")
     private void mail(){
         List<UserInfo> notifyUsers = getNotifyUsers();
         if (CollectionUtils.isNotEmpty(notifyUsers))
@@ -46,7 +46,7 @@ public class CheckRibaoSchedulerTask {
                     });
     }
 
-    @Scheduled(cron="0 00 20 ? * 2,3,4,5,6")
+    @Scheduled(cron="0 00 20 ? * MON-FRI")
     private void sms(){
         List<UserInfo> notifyUsers = getNotifyUsers();
         if (CollectionUtils.isNotEmpty(notifyUsers))
