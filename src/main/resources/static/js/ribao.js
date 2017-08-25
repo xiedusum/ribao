@@ -104,7 +104,7 @@ var buttons = [{
 function addDialog(){
     sUtils.add('#ff','#dd',function(ff, dd){
         $("#name").textbox('setValue',$("#name_Search").textbox('getValue'));
-        $("#date").textbox('setValue',$("#dateq_Search").datebox('getValue'));
+        $("#date").textbox('setValue',$("#datez_Search").datebox('getValue'));
     });
 }
 
