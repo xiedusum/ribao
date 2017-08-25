@@ -1,11 +1,13 @@
 spring:
     datasource:
-      url: jdbc:mysql://localhost:3306/ribao?useUnicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://localhost:3306/ribao?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
-      password: root
+      password: WHz,Xd:0224
       #schema: database/import.sql
       #sql-script-encoding: utf-8
       driver-class-name: com.mysql.jdbc.Driver
+      tomcat:
+        test-on-borrow: true
 
     jpa:
       database: mysql
@@ -27,7 +29,7 @@ spring:
     mail:
       host: smtp.exmail.qq.com
       username: zhks@sunmnet.com
-      password: 1qaz!QAZ
+      password: ****
       port: 465
       default-encoding: UTF-8
       protocol: smtp
@@ -44,7 +46,7 @@ logging:
     path: /usr/common/ribao/logs/
     level:
           com:
-            whz: INFO
+            whz: DEBUG
           org:
             springframework:
               web: INFO
@@ -53,4 +55,5 @@ logging:
 server:
   context-path: /ribao
   port: 80
+debug: true
 
