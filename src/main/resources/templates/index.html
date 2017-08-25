@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="layout :: htmlhead" th:with="title='主页'"></head>
-<body class="easyui-layout">
+<body>
 
-    <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
-    <div data-options="region:'west',title:'West',split:true" style="width:100px;"></div>
-    <div data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;"></div>
+    <a th:href="@{/ribao/}">写日报</a>
+    <a th:href="@{/zhoubao/}">写周报</a>
 
 <div th:include="layout :: htmlfooter">(footer)</div>
-    <script th:src="@{/js/ribao.js}"></script>
 </body>
 </html>
