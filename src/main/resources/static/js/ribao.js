@@ -1,9 +1,3 @@
-/*
- * 代码生成工具自动生成
- * wanghz@sunmnet.com
- *
- */
-
 var columns = [{field:'id',hidden:true},
     {field:'module',title:'模块',width:10,align:'left',sortable:true},
     {field:'description',title:'描述',width:40,align:'left',sortable:true},
@@ -104,7 +98,7 @@ var buttons = [{
 function addDialog(){
     sUtils.add('#ff','#dd',function(ff, dd){
         $("#name").textbox('setValue',$("#name_Search").textbox('getValue'));
-        $("#date").textbox('setValue',$("#datez_Search").datebox('getValue'));
+        $("#date").textbox('setValue',curDate);
     });
 }
 

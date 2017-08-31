@@ -67,6 +67,9 @@
 
 
     <div th:include="layout :: htmlfooter">(footer)</div>
+    <script th:inline="javascript">
+        var curDate = /*[[${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}]]*/'';
+    </script>
     <script th:src="@{/js/ribao.js}"></script>
 </body>
 </html>
